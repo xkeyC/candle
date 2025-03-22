@@ -96,6 +96,10 @@ fn main() -> Result<()> {
         }
     }
 
+    if !is_target_msvc {
+        builder = builder.arg("-Xcompiler").arg("-fPIC");
+    }
+
     let out_file = build_dir.join("libflashattention.a");
     builder.build_lib(out_file);
 
